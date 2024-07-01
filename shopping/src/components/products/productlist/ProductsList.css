@@ -1,0 +1,32 @@
+.text-title-product {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  line-height: 1.5em;
+  height: 3rem;
+}
+.text-price {
+  color: coral;
+}
+.btn-grad {
+  background-image: linear-gradient(to right, #ff5100 0%, #ff9068 51%, #ff5100 100%);
+  margin: 10px;
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  border-color: #fff;
+}
+.btn-grad:hover {
+  background-position: right center; 
+  color: #fff;
+  text-decoration: none;
+}

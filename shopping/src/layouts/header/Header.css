@@ -1,0 +1,20 @@
+.icon_store{
+  width: 60px;
+}
+.header_top a {
+  margin-right: 20px; 
+  text-decoration: none;
+  color: white; 
+  font-size: 16px;
+}
+
+.header_top a:hover {
+  text-decoration: underline; 
+}
+
+.header{
+  background: linear-gradient(to right, #ff5100, #ff9068);
+  color: white; 
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
