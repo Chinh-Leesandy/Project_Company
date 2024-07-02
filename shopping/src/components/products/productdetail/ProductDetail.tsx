@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetProductByIdQuery } from '../../../features/products/product-api-slice';
 import "./ProductDetail.css"
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../features/carts/cart-slice';
+import Product from '../../../types/Product';
 const ProductDetail = () => {
   const params = useParams();
   const id = params.id;
-  const { data = {}, isFetching } = useGetProductByIdQuery(id);
+  const { data = {} as Product, isFetching } = useGetProductByIdQuery(id as string);
   const [quantity, setQuantity] = useState(1);
   console.log(quantity);
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const ProductDetail = () => {
                 type='number'
                 className='form-control me-3'
                 value={quantity}
-                onChange={(e) => setQuantity(e.target.value)}
+                onChange={(e) => setQuantity(Number(e.target.value))}
                 min='1'
               />
               <button 

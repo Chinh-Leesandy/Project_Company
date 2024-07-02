@@ -1,5 +1,4 @@
 import React from 'react';
-import ProductList from './components/products/productlist/ProductList';
 import { Header } from './layouts/header/Header';
 import Routers from './routers/Routers';
 import { Footer } from './layouts/footer/Footer';

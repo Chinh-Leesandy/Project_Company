@@ -1,10 +1,10 @@
-import React from 'react';
 import { useGetAllProductsQuery } from '../../../features/products/product-api-slice';
 import './ProductsList.css'
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../../app/hooks';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../features/carts/cart-slice';
+import Product from '../../../types/Product';
 const ProductList = () => {
   const { data = [], isFetching } = useGetAllProductsQuery();
   const cart = useAppSelector((state) => state.cart.cart);
