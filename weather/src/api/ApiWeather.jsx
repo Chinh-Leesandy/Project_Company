@@ -1,5 +1,5 @@
 const baseUrlWeather = "https://api.openweathermap.org/data/2.5";
-const ApiKey = 'e0feeb4e5d24ccc5f075547ea566159d';
+const ApiKey = 'YOUR_API_KEY';
 
 export const ApiWeather = {
     getCurrentWeatherByCity: async (city) => {
