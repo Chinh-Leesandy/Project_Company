@@ -1,12 +1,21 @@
 import { useAppSelector } from '../../app/hooks';
 import { useDispatch } from 'react-redux';
 import { deleteToCart } from '../../features/carts/cart-slice';
+import { errorToast, successToast } from '../../util/toastify';
 
 const Carts = () => {
   const dispatch = useDispatch()
   const data = useAppSelector((state) => state.cart.cart);
   const totalQuantity = data.reduce((acc, cart) => acc + cart.quantity, 0);
   const totalPrice = data.reduce((acc, cart) => acc + parseFloat(cart.product.price) * cart.quantity, 0);
+  const handleDeleteProductToCart = (id: number) => {
+    try {
+      dispatch(deleteToCart({productID: id}));
+      successToast("Delete to cart successfull");
+    } catch (error) {
+      errorToast("Delete to cart fail");
+    }
+  }
   return (
     <div className='container'>
       {data && data.length === 0 ? (
@@ -28,7 +37,7 @@ const Carts = () => {
                         <span>{cart.product.price}$ x {cart.quantity}</span>
                       </div>
                     </div>
-                    <button type="button" onClick={() => (dispatch(deleteToCart({productID: cart.product.id})))}><i className="bi bi-trash"></i></button>
+                    <button type="button" onClick={() => (handleDeleteProductToCart(cart.product.id))} className='btn btn-outline-danger'><i className="bi bi-trash"></i></button>
                   </div>
                 ))
               ) : (
