@@ -1,19 +1,28 @@
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useGetProductByIdQuery } from '../../../features/products/product-api-slice';
 import "./ProductDetail.css"
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../features/carts/cart-slice';
 import Product from '../../../types/Product';
+import { errorToast, successToast } from '../../../util/toastify';
 const ProductDetail = () => {
   const params = useParams();
   const id = params.id;
   const { data = {} as Product, isFetching } = useGetProductByIdQuery(id as string);
   const [quantity, setQuantity] = useState(1);
-  console.log(quantity);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleOnClickAddToCart = () => {
-    dispatch(addToCart({product: data, quantity}));
+    try {
+      dispatch(addToCart({product: data, quantity}));
+      successToast("Add to cart successfull");
+      setTimeout(() => {
+        navigate('/cart');
+      }, 1000);
+    } catch (error) {
+      errorToast("Add to cart fail");
+    }
   }
   return (
     <div className='container'>
